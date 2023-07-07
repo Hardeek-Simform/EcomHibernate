@@ -31,6 +31,10 @@ public class MembershipController {
     @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<Membership> updateMembership(@RequestBody Membership membership, @PathVariable int id) {
+        /*
+        id in url = MembershipId
+        for update operation = membershipType,Expiry
+        */
         Membership updatedMembership = membershipService.updateMembership(membership, id);
         return new ResponseEntity<>(updatedMembership, HttpStatus.ACCEPTED);
     }

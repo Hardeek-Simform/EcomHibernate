@@ -31,6 +31,10 @@ public class OrderController {
     @Transactional
     @PostMapping("/{id}")
     public ResponseEntity<List<Orders>> addOrderList(@RequestBody List<Orders> orders, @PathVariable int id) {
+        /* response needed in array format in json [{}]
+        id in url = userId
+        for add operation = productName
+        */
         List<Orders> addedOrders = ordersService.addOrder(orders, id);
         return new ResponseEntity<>(addedOrders, HttpStatus.CREATED);
     }
