@@ -2,6 +2,7 @@ package com.simform.ecommerceapi.controller;
 
 import com.simform.ecommerceapi.entity.Membership;
 import com.simform.ecommerceapi.service.MembershipService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ public class MembershipController {
         return new ResponseEntity<>(membershipById, HttpStatus.FOUND);
     }
 
+    @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<Membership> updateMembership(@RequestBody Membership membership, @PathVariable int id) {
         Membership updatedMembership = membershipService.updateMembership(membership, id);
